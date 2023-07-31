@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:53:51 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/20 15:54:43 by verdant          ###   ########.fr       */
+/*   Updated: 2023/07/31 11:35:39 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <iomanip>
 
 typedef enum e_type
 {
 	CHAR,
 	INT,
 	FLOAT,
-	PSEUDO_FLOAT,
 	DOUBLE,
-	PSEUDO_DOUBLE,
+	PSEUDO,
 	ERROR
 } t_type;
 
@@ -43,5 +43,7 @@ public:
 	ScalarConverter &operator=(const ScalarConverter &other);
 	int			identify( void );
 	static void	convert( std::string input);
-	void		isCharPrintable( int c );
+	void		isCharPrintable( char c );
+	void		print(int i, float f, double d);
+	void		printPseudo(std::string one, std::string two);
 };

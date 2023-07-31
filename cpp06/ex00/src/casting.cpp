@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:56:13 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/20 15:57:09 by verdant          ###   ########.fr       */
+/*   Updated: 2023/07/31 11:35:16 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 }
 
 
-void	ScalarConverter::isCharPrintable( int c )
+void	ScalarConverter::isCharPrintable( char c )
 {
 	if (isprint(c))
 		std::cout << "char: '" << c << "'" << std::endl;
@@ -45,54 +45,54 @@ void	ScalarConverter::isCharPrintable( int c )
 int	ScalarConverter::identify( void )
 {
 	std::string::iterator it = _input.begin();
-	bool	hasChar = false;
-	bool	hasNum = false;
 
-	while (it != _input.end())
-	{
-		if (isdigit(*it))
-			hasNum = true;
-		if (isalpha(*it))
-			hasChar = true;
-		if (hasChar && hasNum)
-			return (ERROR);
-		it++;
-	}
 	if (_input.length() == 1 && !isdigit(_input[0]))
 		return (CHAR);
 	if (_input.find("nanf") != std::string::npos || _input.find("inff") != std::string::npos)
-		return (PSEUDO_FLOAT);
+		return (PSEUDO);
 	if (_input.find("inf") != std::string::npos || _input.find("nan") != std::string::npos)
-		return (PSEUDO_DOUBLE);
-	if (_input.find(".f") != std::string::npos)
+		return (PSEUDO);
+	if (_input.find(".") != std::string::npos && _input.find("f") != std::string::npos)
+	{
+		int pos = _input.find("f");
+		if (!isdigit(_input[pos - 1]))
+			return (ERROR);
 		return (FLOAT);
+	}
 	if (_input.find(".") != std::string::npos)
 		return (DOUBLE);
+	while (it != _input.end())
+	{
+		if (isdigit(*it) || *it == '-')
+			it++;
+		else
+			return (ERROR);
+	}
 	return (INT);
-
-
-
-	// if (_input.find("nan") != std::string::npos || _input.find("nanf") != std::string::npos)
-	
 }
 
+void	ScalarConverter::print(int i, float f, double d)
+{
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+}
+
+void	ScalarConverter::printPseudo(std::string one, std::string two)
+{
+	std::cout << "float: " << one << std::endl;
+	std::cout << "double: " << two << std::endl;
+}
 
 void ScalarConverter::convert(std::string input)
 {
 	ScalarConverter sc(input);
-	
-
-	
+		
 	switch (sc.identify()) {
 		case CHAR:
 			try {		
-				if (!isprint(input[0]))
-					std::cout << "char: Non displayable" << std::endl;
-				else
-					std::cout << "char: '" << input[0] << "'" << std::endl;
-				std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
-				std::cout << "float: " << static_cast<float>(input[0]) << ".0f" << std::endl;
-				std::cout << "double: " << static_cast<double>(input[0]) << ".0" << std::endl;
+				sc.isCharPrintable(static_cast<char>(input[0]));
+				sc.print(static_cast<int>(input[0]), static_cast<float>(input[0]), static_cast<double>(input[0]));
 			} catch (std::exception &e) {
 				std::cout << e.what() << std::endl;
 			}
@@ -101,9 +101,7 @@ void ScalarConverter::convert(std::string input)
 			try {
 				int i = std::stoi(input);
 				sc.isCharPrintable(static_cast<char>(i));
-				std::cout << "int: " << i << std::endl;
-				std::cout << "float: " << static_cast<float>(i) << ".0f" << std::endl;
-				std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
+				sc.print(i, static_cast<float>(i), static_cast<double>(i));
 			} catch (std::exception &e) {
 				std::cout << e.what() << std::endl;
 			}
@@ -112,9 +110,7 @@ void ScalarConverter::convert(std::string input)
 			try {
 				float f = std::stof(input);
 				sc.isCharPrintable(static_cast<char>(f));
-				std::cout << "int: " << static_cast<int>(f) << std::endl;
-				std::cout << "float: " << f << "f" << std::endl;
-				std::cout << "double: " << static_cast<double>(f) << std::endl;
+				sc.print(static_cast<int>(f), f, static_cast<double>(f));
 			} catch (std::exception &e) {
 				std::cout << e.what() << std::endl;
 			}
@@ -123,50 +119,20 @@ void ScalarConverter::convert(std::string input)
 			try {
 				double d = std::stod(input);
 				sc.isCharPrintable(static_cast<char>(d));
-				std::cout << "int: " << static_cast<int>(d) << std::endl;
-				std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-				std::cout << "double: " << d << std::endl;
+				sc.print(static_cast<int>(d), static_cast<float>(d), d);
 			} catch (std::exception &e) {
 				std::cout << e.what() << std::endl;
 			}
 			break;
-		case PSEUDO_FLOAT:
-			std::cout << "char: impossible" << std::endl;
-			std::cout << "int: impossible" << std::endl;
-			if (input.find("nanf") != std::string::npos)
-			{
-				std::cout << "float: nanf" << std::endl;
-				std::cout << "double: nan" << std::endl;
-			}
-			else if (input.find("inff") != std::string::npos)
-			{
-				std::cout << "float: inff" << std::endl;
-				std::cout << "double: inf" << std::endl;
-			}
-			else
-			{
-				std::cout << "float: -inff" << std::endl;
-				std::cout << "double: -inf" << std::endl;
-			}
-			break;
-		case PSEUDO_DOUBLE:
+		case PSEUDO:
 			std::cout << "char: impossible" << std::endl;
 			std::cout << "int: impossible" << std::endl;
 			if (input.find("nan") != std::string::npos)
-			{
-				std::cout << "float: nanf" << std::endl;
-				std::cout << "double: nan" << std::endl;
-			}
-			else if (input.find("inff") != std::string::npos)
-			{
-				std::cout << "float: inff" << std::endl;
-				std::cout << "double: inf" << std::endl;
-			}
+				sc.printPseudo("nanf", "nan");
+			else if (input.find("-") != std::string::npos)
+				sc.printPseudo("-inff", "-inf");
 			else
-			{
-				std::cout << "float: -inff" << std::endl;
-				std::cout << "double: -inf" << std::endl;
-			}
+				sc.printPseudo("inff", "inf");
 			break;
 		default:
 			 std::cout << "Error: Invalid input" << std::endl;
