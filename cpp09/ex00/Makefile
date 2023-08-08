@@ -1,5 +1,5 @@
 CXX := clang++
-CXXFLAGS := -Wall -std=c++98 # -Wextra -Werror 
+CXXFLAGS := -Wall -std=c++98 -Wextra -Werror 
 INC := -Iinc/
 
 TARGET := btc

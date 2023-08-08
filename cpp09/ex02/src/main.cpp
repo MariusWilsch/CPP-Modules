@@ -5,25 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 13:07:09 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/04 15:37:23 by verdant          ###   ########.fr       */
+/*   Created: 2023/08/08 09:58:47 by verdant           #+#    #+#             */
+/*   Updated: 2023/08/08 12:40:13 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "PmergeMe.hpp"
 
-
-
-
-int		main( int argc, char **argv)
+int	main (int argc, char **argv)
 {
-	if (argc != 2)
-	{ // Build a error function
-		cout << "Usage: ./btc input.txt" << endl;
-		return (1);
+	if (argc < 2)
+		return 0;
+	try {
+		SortContainers sort(argv);
 	}
-	BitcoinExchange btc;
-
-	btc.parseCSV(btc.prepFile("assets/data.csv"));
-	btc.calcValue(btc.prepFile(argv[1]));	
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	return 0;
 }

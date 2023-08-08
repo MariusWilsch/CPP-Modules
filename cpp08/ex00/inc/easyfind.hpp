@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyFind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 13:07:09 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/04 15:37:23 by verdant          ###   ########.fr       */
+/*   Created: 2023/07/31 15:06:31 by verdant           #+#    #+#             */
+/*   Updated: 2023/07/31 15:29:10 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#pragma once
+
+#include <algorithm>
+#include <iostream>
+#include <exception>
+#include <vector>
+#include <list>
+#include <deque>
 
 
 
-
-int		main( int argc, char **argv)
+template <typename T> int easyFind(T &container, int n)
 {
-	if (argc != 2)
-	{ // Build a error function
-		cout << "Usage: ./btc input.txt" << endl;
-		return (1);
-	}
-	BitcoinExchange btc;
-
-	btc.parseCSV(btc.prepFile("assets/data.csv"));
-	btc.calcValue(btc.prepFile(argv[1]));	
+	typename T::iterator it = std::find(container.begin(), container.end(), n);
+	if (it == container.end())
+		throw std::exception();
+	return *it;
 }

@@ -2,7 +2,7 @@ CXX := clang++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 INC := -Iinc/
 
-TARGET := form
+TARGET := PmergeMe
 
 SRC_DIR := src/
 OBJ_DIR := obj/
@@ -14,18 +14,17 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
+.PHONY: all clean fclean re
+
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	@$(CXX) $(CXXFLAGS)  $^ -o $@
 	@echo "$(GREEN)Executable created.$(RESET)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp inc/*.hpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp inc/*.hpp 
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
-
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
 
 clean:
 	@rm -rf $(OBJ_DIR)
