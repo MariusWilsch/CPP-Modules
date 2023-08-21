@@ -6,13 +6,11 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:07:09 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/04 15:37:23 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 16:09:49 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-
 
 
 int		main( int argc, char **argv)
