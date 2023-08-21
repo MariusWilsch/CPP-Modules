@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:26:43 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/27 18:46:06 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:05:22 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,20 @@ void	Bureaucrat::decGrade(void) {
 	if (this->_grade + 1 > 150)
 		throw GradeTooLowException();
 	this->_grade++;
+}
+
+void	Bureaucrat::signForm(const Form& form)
+{
+	if (form.getSigned() == true)
+		std::cout << "signForm: " << form.getName() << ": signed succesfully" << std::endl;
+	else
+		std::cout << "signForm: " << form.getName() << " couldn't be signed" << std::endl;
+}
+
+const char* GradeTooHighException::what() const throw() {
+	return "Grade too high";
+}
+
+const char* GradeTooLowException::what() const throw() {
+	return "Grade too low";
 }

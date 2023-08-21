@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
+/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 10:56:50 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/31 16:19:37 by mwilsch          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:17:20 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
-// # include <stdexcept>
-
 # include "AForm.hpp"
 
 class AForm;

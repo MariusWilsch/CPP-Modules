@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
+/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:47:01 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/31 17:12:46 by mwilsch          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:28:31 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,43 @@ std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& rhs)
 }
 
 /*			Burecrat execute Test			*/
-int main(void)
-{
-	Bureaucrat bob("Bob", 2);
-	ShurbberyCreationForm shrub("Shrub");
-	cout << "--- Objects created ---" << endl << endl;
-	cout << "Bob's Score: " << bob.getGrade() << " < Mercel's Score: " << shrub.getGradeSign() << endl;
-	try {
-		shrub.beSigned(bob);
-		bob.executeForm(shrub);
-	} catch (std::exception &e) {
-		cout << e.what() << endl;
-	}
-}
 
-/*			PresidentalPardonForm Test			*/
 // int main(void)
 // {
-// 	Bureaucrat bob("Bob", 3);
-// 	PresidentialPardonForm mercel("Mercel");
+// 	Bureaucrat bob("Bob", 2);
+// 	ShurbberyCreationForm shrub("Shrub");
 // 	cout << "--- Objects created ---" << endl << endl;
-// 	cout << "Bob's Score: " << bob.getGrade() << " < Mercel's Score: " << mercel.getGradeExec() << endl;
+// 	cout << "Bob's Score: " << bob.getGrade() << " < Mercel's Score: " << shrub.getGradeSign() << endl;
 // 	try {
-// 		mercel.beSigned(bob);
+// 		shrub.beSigned(bob);
+// 		bob.executeForm(shrub);
 // 	} catch (std::exception &e) {
 // 		cout << e.what() << endl;
 // 	}
-// 	try {
-// 		mercel.execute(bob);
-// 	} catch (std::exception &e) {
-// 		cout << e.what() << endl;	
-// 	}
 // }
 
+/*			PresidentalPardonForm Test			*/
+
+int main(void)
+{
+	Bureaucrat bob("Bob", 3);
+	PresidentialPardonForm mercel("Mercel");
+	cout << "--- Objects created ---" << endl << endl;
+	cout << "Bob's Score: " << bob.getGrade() << " < Mercel's Score: " << mercel.getGradeExec() << endl;
+	try {
+		mercel.beSigned(bob);
+	} catch (std::exception &e) {
+		cout << e.what() << endl;
+	}
+	try {
+		mercel.execute(bob);
+	} catch (std::exception &e) {
+		cout << e.what() << endl;	
+	}
+}
+
 /*			RobotomyRequestForm Test			*/
+
 // int main(void)
 // {
 // 	Bureaucrat bob("Bob", 2);

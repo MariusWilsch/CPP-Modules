@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:57:56 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/29 10:29:30 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:06:51 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,8 @@ void	Form::beSigned(const Bureaucrat& src)
 {
 	if (src.getGrade() <= getGradeSign())
 		_signed = true;
-	else
+	else 
 		throw GradeTooLowException();
 }
 
-void	Form::signForm(const Form& src)
-{
-	if (src.getSigned() == true)
-		std::cout << getName() << ": signed succesfully" << std::endl;
-	else
-		std::cout << getName() << "couldn't be signed because the grade: " << getGradeSign() << " was higher than the grade of the Bureaucrat" << std::endl;
-}
+

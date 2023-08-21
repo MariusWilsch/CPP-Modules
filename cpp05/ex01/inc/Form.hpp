@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 09:54:56 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/29 16:11:40 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:02:08 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,29 @@ class Form
 {
 	private:
 		const std::string	_name;
-		bool							_signed;
-		const int					_gradeSign;
-		const int					_gradeExec;
+		bool				_signed;
+		const int			_gradeSign;
+		const int			_gradeExec;
 	public:
+
+	/*			Class Functions			*/
+	
 		Form(void);
 		Form(const std::string name, int gradeSign, int gradeExec);
 		Form(const Form& src);
 		Form& operator=(const Form& src);
 		~Form(void);
-		std::string	getName(void) const;
+	
+	/*			Getter/Setter			*/
+	
+		std::string			getName(void) const;
 		bool				getSigned(void) const;
 		int					getGradeSign(void) const;
 		int					getGradeExec(void) const;
+
+	/*			Member Functions		*/
+	
 		void				beSigned(const Bureaucrat& src);
-		bpp;				signForm(const Form& src);
 };
 
 #endif

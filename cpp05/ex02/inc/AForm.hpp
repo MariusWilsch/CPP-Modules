@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
+/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 10:42:09 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/29 17:37:41 by mwilsch          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:26:05 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,27 @@ class AForm
 		const int					_gradeSign;
 		const int					_gradeExec;
 	public:
+	/*			Orthodox canonical  form			*/
+
 		AForm(void);
 		AForm(const std::string name, int gradeSign, int gradeExec);
 		AForm(const AForm& src);
 		AForm& operator=(const AForm& src);
 		virtual ~AForm(void) = 0;
-		virtual void		execute(const Bureaucrat& executor) const = 0;
-		std::string	getName(void) const;
+	
+	/*			Getters			*/	
+	
+		std::string			getName(void) const;
 		bool				getSigned(void) const;
 		int					getGradeSign(void) const;
 		int					getGradeExec(void) const;
+
+	/*		Member Functions		*/
+	
 		void				beSigned(const Bureaucrat& src);
 		void				signForm(const AForm& src);
 		void				checkBureaucrat(const Bureaucrat& src) const;
+		virtual void		execute(const Bureaucrat& executor) const = 0;
 };
 
 #endif 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   casting.cpp                                        :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:56:13 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/31 11:35:16 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:42:12 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/casting.hpp"
+#include "../inc/ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter(void) : _input("0") {
 	_isChar = false;

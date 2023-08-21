@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
+/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:25:16 by verdant           #+#    #+#             */
-/*   Updated: 2023/05/31 16:37:19 by mwilsch          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:25:44 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,24 @@ class Bureaucrat {
 		const std::string	_name;
 		int								_grade;
 	public:
+	/*			Orthodox canonical  form			*/
+	
 		Bureaucrat(void);
 		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(const Bureaucrat& src);
 		Bureaucrat& operator=(const Bureaucrat& src);
 		~Bureaucrat(void);
-		int	getGrade(void) const;
+	
+	/*			Getters			*/
+	
+		int			getGrade(void) const;
 		std::string	getName(void) const;
-		void	incGrade(void);
-		void	decGrade(void);
-		void executeForm(const AForm& form);
+
+	/*		Member Functions		*/
+	
+		void		incGrade(void);
+		void		decGrade(void);
+		void		executeForm(const AForm& form);
 };
 
 

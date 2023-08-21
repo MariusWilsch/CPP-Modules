@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:04:52 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/31 12:14:57 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:49:27 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Serializer::~Serializer(void) {}
 
 Serializer &Serializer::operator=(const Serializer &rhs) {
 	if (this != &rhs) {
-		// this->_data = rhs._data;
+		(void)rhs;
 	}
 	return (*this);
 }

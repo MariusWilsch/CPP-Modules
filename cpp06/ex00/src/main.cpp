@@ -6,11 +6,11 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:53:45 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/28 15:01:14 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 12:45:05 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/casting.hpp"
+#include "../inc/ScalarConverter.hpp"
 
 int	main(int argc, char **argv)
 {
