@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:43:53 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/31 14:44:14 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 14:55:31 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,25 @@ int	main(void)
 	iter(arr3, 5, print);
 	return (0);
 }
+
+// class Awsome{
+
+// public:
+//     Awsome(void): _n(42) {return;}
+//     int get(void)const {return this->_n;}
+// private:
+//     int _n;
+// };
+
+// std::ostream &operator<<(std::ostream &o, Awsome const &rhs) {o<<rhs.get(); return o;}
+
+// template <typename T>
+// void print(T const &x){std::cout << x << std::endl; return;}
+
+// int main(){
+//     int tab[] = {0,1,2,3,4};
+//     Awsome tab2[5];
+
+//     iter(tab, 5, print);
+//     iter(tab2, 5, print);
+// }
