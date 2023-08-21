@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:04:16 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/02 13:14:19 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 15:40:04 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Span& Span::operator=(const Span &other)
 		return (*this);
 	_n = other._n;
 	_set = other._set;
+	return (*this);
 }
 
 void	Span::printAll(void)
@@ -72,7 +73,8 @@ void	Span::shortestSpan(void)
 	int shortest = __INT_MAX__;
 
 	std::set<int>::iterator it = _set.begin();
-	std::set<int>::iterator next = std::next(it, 1);
+	std::set<int>::iterator next = _set.begin();
+	next++;
 	std::set<int>::iterator end = _set.end();
 	
 	while (next != end)

@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:25:15 by verdant           #+#    #+#             */
-/*   Updated: 2023/07/31 15:29:36 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 15:12:09 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(void)
 		std::cout << "vector: " << easyFind(v, 1) << std::endl;
 		std::cout << "list: " << easyFind(l, 2) << std::endl;
 		std::cout << "deque: " << easyFind(d, 3) << std::endl;
-		std::cout << "error: " << easyFind(v, 42) << std::endl;
+		std::cout << "vector: " << easyFind(v, 42) << std::endl;
 	}
 	catch (std::exception &e)
 	{

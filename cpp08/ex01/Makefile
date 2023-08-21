@@ -14,7 +14,9 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-.PHONY: all clean fclean re
+ifdef DEBUG
+	CXXFLAGS += -g3 -fsanitize=address
+endif
 
 all: $(TARGET)
 

@@ -6,12 +6,14 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:13:15 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/02 13:15:48 by verdant          ###   ########.fr       */
+/*   Updated: 2023/08/21 15:43:24 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stack>
 #include <deque>
+#include <list>
+#include <algorithm>
 #include <iostream>
 
 /**
@@ -31,8 +33,8 @@ class MutantStack : public std::stack<T>
 		~MutantStack( void ) {};
 		MutantStack(const MutantStack &other) { *this = other; }
 		MutantStack &operator=(const MutantStack &other) { 
-			if (this == &other) r
-				eturn *this;
+			if (this == &other) 
+				return *this;
 			 this->c = other.c;
 		}
 
