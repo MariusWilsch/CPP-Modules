@@ -3,60 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:11:58 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/21 14:48:08 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/02 12:22:32 by mwilsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 
-// int main() {
-// 	int a = 2;
-// 	int b = 3;
-// 	swap(a, b);
-// 	std::cout << "a = " << a << ", b = " << b << std::endl;
-// 	std::cout << "min(a, b) = " << min(a, b) << std::endl;
-// 	std::cout << "max(a, b) = " << max(a, b) << std::endl;
+int main() {
+	int a = 2;
+	int b = 3;
+	::swap(a, b);
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min(a, b) = " << min(a, b) << std::endl;
+	std::cout << "max(a, b) = " << max(a, b) << std::endl;
 
-// 	std::string c = "chaine1";
-// 	std::string d = "chaine2";
-// 	swap(c, d);
-// 	std::cout << "c = " << c << ", d = " << d << std::endl;
-// 	std::cout << "min(c, d) = " << min(c, d) << std::endl;
-// 	std::cout << "max(c, d) = " << max(c, d) << std::endl;
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min(c, d) = " << min(c, d) << std::endl;
+	std::cout << "max(c, d) = " << max(c, d) << std::endl;
 
-// 	return 0;
-// }
-
-// class Awesome{
-
-// public:
-// 	Awesome(void) : _n(0){}
-// 	Awesome(int n) : _n(n) {}
-
-// 	Awesome &operator= (Awesome &a) {_n = a._n; return *this;}
-	
-// 	bool operator==(const Awesome &a) const { return this->_n == a._n; } 
-// 	bool operator>(Awesome &a) {return this->_n > a.get_n();}
-// 	bool operator<(Awesome &a) {return this->_n < a.get_n();}
-
-// 	int get_n()const {return _n;}
-
-// private:
-// 	int _n;
-// };
-
-// std::ostream &operator << (std::ostream &o, const Awesome& a){o << a.get_n(); return o;}
-
-// int main()
-// {
-// 	Awesome a(2), b(4);
-
-// 	swap (a,b);
-// 	std::cout << "a: " << a << " b: " << b << std::endl;
-// 	std::cout << "max: " << max(a,b) << std::endl;
-// 	std::cout << "min: " << min(a,b) << std::endl;
-// 	return 0;
-// }
+	return 0;
+}
