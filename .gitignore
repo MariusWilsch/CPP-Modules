@@ -2,3 +2,4 @@ obj/
 zombie
 .vscode/
 .DS_Store
+*.pdf
