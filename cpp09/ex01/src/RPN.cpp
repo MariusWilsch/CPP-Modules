@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 13:35:10 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/08 11:21:57 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/10 08:04:41 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ void	RPN::applyOperation( char mathOperator )
 		_rpnStack.push(num2 * num1);
 		break ;
 	case '/':
+		if (num1 == 0) {
+			cerr << "Error: Division by zero" << endl;
+			exit(1);
+		}
 		_rpnStack.push(num2 / num1);
 		break;
 	default:
