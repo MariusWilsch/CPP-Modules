@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:58:47 by verdant           #+#    #+#             */
-/*   Updated: 2023/10/10 09:06:21 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:01:15 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main (int argc, char **argv)
 		return 0;
 	try {
 			PmergeMe pm(argv);
-			pm.print();
+
+			pm.printResult();
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
