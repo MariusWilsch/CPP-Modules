@@ -6,17 +6,17 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:03:59 by verdant           #+#    #+#             */
-/*   Updated: 2023/10/11 07:53:08 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/11 13:19:45 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 void printMap(const std::map<std::string, float>& myMap) {
-    if (myMap.empty()) {
-        std::cout << "The map is empty." << std::endl;
-        return;
-    }
+		if (myMap.empty()) {
+				std::cout << "The map is empty." << std::endl;
+				return;
+		}
 
 	std::map<string, float>::const_iterator it;
 	for (it = myMap.begin(); it != myMap.end(); it++)
@@ -62,7 +62,11 @@ void	BitcoinExchange::parseCSV( ifstream file )
 	getline(file, line); // Skipping the first line
 	while(getline(file, line)) {
 		key = line.substr(0, KEY_LENGTH);
-		value = std::stof((line.erase(0, KEY_LENGTH + 1)));
+		try {
+			value = std::stof((line.erase(0, KEY_LENGTH + 1)));
+		} catch (std::exception &e) {
+			cout << e.what() << endl;
+		}
 		_map.insert(std::make_pair(key, value));
 	}
 	// printMap(_map);
@@ -127,17 +131,21 @@ bool	BitcoinExchange::checkInputFile( string &line )
 	if (!checkValidRange(_date, MONTH) || !checkValidRange(_date, DAY))
 		return (this->printErr("bad date format " , _date, false));
 	try {
-		_value = std::stof(line.erase(0, CHECK_PIPE + 2));
+		line.erase(0, line.find('|') + 1);
+		line.erase(std::remove_if(line.begin(), line.end(), (int(*)(int))std::isspace), line.end());
+		_value = std::stof(line);
 		if (_value < 0)
-			return (this->printErr("not a positive number.", "", false));
+				return (this->printErr("not a positive number.", "", false));
 		if (_value > 1000)
-			return (this->printErr("too large a number.", "", false));
-	} catch (std::out_of_range) {
-		return (this->printErr("too large a number.", "", false));
-	}
+				return (this->printErr("too large a number.", "", false));
+		} catch (std::invalid_argument&) {
+				return (this->printErr("Invalid input. Not a number.", "", false));
+		} catch (std::out_of_range&) {
+				return (this->printErr("Number out of range for float.", "", false));
+		}
 	return (true);
 }
-		
+
 ifstream BitcoinExchange::prepFile(const string& filename)
 {
 	std::ifstream file(filename);
@@ -199,3 +207,4 @@ void	BitcoinExchange::calcValue( ifstream file )
 		 	this->printErr("bad input => ", line, 0);
 	}
 }
+
