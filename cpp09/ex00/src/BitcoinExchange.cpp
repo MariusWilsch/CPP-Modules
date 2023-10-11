@@ -6,7 +6,7 @@
 /*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:03:59 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/04 15:34:36 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/11 07:53:08 by verdant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ bool	BitcoinExchange::checkInputFile( string &line )
 ifstream BitcoinExchange::prepFile(const string& filename)
 {
 	std::ifstream file(filename);
-	if (!file.is_open() || file.eof())
+	if (!file.is_open() || file.peek() == std::ifstream::traits_type::eof())
 		exit(this->printErr("Erroneous file.", "", 1));
 	return (file);
 }
@@ -182,6 +182,7 @@ void	BitcoinExchange::calcValue( ifstream file )
 	string	line;
 	int		i;
 
+	
 	getline(file, line); // Skip first line
 	while (getline(file, line)) {
 		if (line.empty())
