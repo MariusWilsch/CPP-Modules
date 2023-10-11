@@ -38,9 +38,13 @@ PmergeMe::PmergeMe(char *argv[]) {
 
 void PmergeMe::printResult() {
 
-	std::cout << "After ";
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-		std::cout << *it << " ";
+	std::cout <<std::endl << std::endl << "After ";
+	std::cout << vec[0] << " ";
+	for (size_t i = 1; i < vec.size(); ++i) {
+		std::cout << vec[i] << " ";
+		if (vec[i] == vec[i - 1]) // Comment this line to see the difference in the time taken to sort
+			throw std::runtime_error("Duplicate number found");
+	}
 	std::cout << std::endl;
 
 	std::cout << "Time to process a range of " << vec.size() << " elements with std::vec : " << duration[0].count() << " us" << std::endl;
