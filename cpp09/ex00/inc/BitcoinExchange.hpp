@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:03:32 by verdant           #+#    #+#             */
-/*   Updated: 2023/10/11 13:18:53 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/11 13:37:54 by mwilsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ public:
 
 	/* Member Functions */
 
-	void					parseCSV( ifstream file);
-	void					calcValue(ifstream file);
+	void					parseCSV( string filename );
+	void					calcValue(string filename );
 	void					lookupExchangeRate( void );
 	bool					checkInputFile(string& line);
-	ifstream				prepFile(const string& filename);
-	
+
 };
 

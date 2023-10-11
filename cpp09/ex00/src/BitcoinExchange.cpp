@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:03:59 by verdant           #+#    #+#             */
-/*   Updated: 2023/10/11 13:19:45 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/11 13:43:57 by mwilsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,18 @@ template <typename T> T BitcoinExchange::printErr(string must, string opt, T ret
 	return (retVal);
 }
 
-void	BitcoinExchange::parseCSV( ifstream file )
+void	BitcoinExchange::parseCSV( string filename )
 {
 	string	line;
 	string	key;
 	float	value;
 	
+	ifstream file(filename);
+	if (!file.is_open() || file.peek() == std::ifstream::traits_type::eof())
+		exit(this->printErr("Erroneous file.", "", 1));
 	getline(file, line); // Skipping the first line
 	while(getline(file, line)) {
+		line.erase(std::remove_if(line.begin(), line.end(), (int(*)(int))std::isspace), line.end());
 		key = line.substr(0, KEY_LENGTH);
 		try {
 			value = std::stof((line.erase(0, KEY_LENGTH + 1)));
@@ -146,14 +150,6 @@ bool	BitcoinExchange::checkInputFile( string &line )
 	return (true);
 }
 
-ifstream BitcoinExchange::prepFile(const string& filename)
-{
-	std::ifstream file(filename);
-	if (!file.is_open() || file.peek() == std::ifstream::traits_type::eof())
-		exit(this->printErr("Erroneous file.", "", 1));
-	return (file);
-}
-
 /**
  * @brief 
  * 
@@ -185,12 +181,14 @@ void	BitcoinExchange::lookupExchangeRate( void )
 	_csvValue = it->second;
 }
 
-void	BitcoinExchange::calcValue( ifstream file )
+void	BitcoinExchange::calcValue( string filename )
 {
 	string	line;
 	int		i;
 
-	
+	ifstream file(filename);
+	if (!file.is_open() || file.peek() == std::ifstream::traits_type::eof())
+		exit(this->printErr("Erroneous file.", "", 1));
 	getline(file, line); // Skip first line
 	while (getline(file, line)) {
 		if (line.empty())

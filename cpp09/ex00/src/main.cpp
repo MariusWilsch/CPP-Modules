@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mwilsch <mwilsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:07:09 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/21 16:09:49 by verdant          ###   ########.fr       */
+/*   Updated: 2023/10/11 13:36:32 by mwilsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		main( int argc, char **argv)
 	}
 	BitcoinExchange btc;
 
-	btc.parseCSV(btc.prepFile("assets/data.csv"));
-	btc.calcValue(btc.prepFile(argv[1]));	
+
+	btc.parseCSV("assets/data.csv");
+	btc.calcValue(argv[1]);	
 }
