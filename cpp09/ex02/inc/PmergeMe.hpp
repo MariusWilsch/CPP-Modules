@@ -1,55 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: verdant <verdant@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 09:58:50 by verdant           #+#    #+#             */
-/*   Updated: 2023/08/08 12:20:54 by verdant          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #pragma once
 
 #include <iostream>
 #include <vector>
-#include <deque>
-#include <chrono>
+#include <list>
 #include <algorithm>
+#include <chrono>
 
 using std::vector;
-using std::deque;
-using std::cout;
-using std::endl;
-using std::chrono::high_resolution_clock;
+using std::list;
 
-
-
-class SortContainers {
+class PmergeMe {
 	private:
-		std::vector<int> _vec;
-		std::deque<int> _deq;
-		std::chrono::microseconds _durationVec;
-		std::chrono::microseconds _durationDeq;
+		vector<int> vec;
+		list<int> lst;
+		std::array<std::chrono::microseconds, 2> duration;
 	public:
-		
-		/* Orthodox Canonical Form */
-		
-		SortContainers( void );
-		SortContainers( char** argv );
-		~SortContainers( void );
-		SortContainers( const SortContainers& src);
-		SortContainers& operator=(const SortContainers& src);
-		
-		/*  Static Member Functions */
-	
-		static void		mergeSortVec(vector<int> &vec, int len);
-		static void		mergeVec(vector<int> &left, vector<int> &right, vector<int> &vec);
-		static void		mergeSortDeque(std::deque<int> &deq, int len);
-		static void		mergeDeque(std::deque<int> &left, std::deque<int> &right, std::deque<int> &deq);
-		
-		/*  Member Functions */
-		
-		void		printResult(void);
+
+		PmergeMe();
+		PmergeMe(char *argv[]);
+		PmergeMe(const PmergeMe &other);
+		~PmergeMe();
+		PmergeMe &operator=(const PmergeMe &other);
+		void printResult();
+		void sort_vec(); // This could be a template for vector and list 
+		void sort_lst(); // They could return the time taken to sort
 };
